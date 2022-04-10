@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 // On simplifie ce qu'il y a au dessus
-Route::view('/','welcome');
+Route::view('/home','welcome');
 Route::view('/about','about');
 
 Route::get('/hello/{firstname}', function () {
@@ -26,14 +26,14 @@ Route::get('/hello/{firstname}', function () {
 
 Route::get('/signin', 'SigninController@formSignin');
 
-Route::post('signin', 'SigninController@signinTraitement');
+Route::post('/signin', 'SigninController@signinTraitement');
 
 Route::get('/login','LoginController@formLogin');
 
 Route::post('/login','LoginController@loginTraitement');
 
 
-Route::get('/users', 'UsersController@usersList');
+Route::get('/', 'UsersController@usersList');
 
 Route::get('/profile','AccountController@profile');
 
