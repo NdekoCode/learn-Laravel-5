@@ -31,6 +31,10 @@ class AccountController extends Controller
             'password_confirmation' => ['required'],
         
         ],['password.min' => "Pour des raisons de sécurité le mot de passe doit faire :min caractères"]);
-        
+
+        // On modifie le mot de passe
+        auth()->user()->update(['password' => bcrypt(request('password'))]);
+        flash("Votre mot de passe a été modifié")->success();
+        return redirect('/profile');
     }
 }
