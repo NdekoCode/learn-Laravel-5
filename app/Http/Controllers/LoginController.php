@@ -23,7 +23,7 @@ class LoginController extends Controller
             'password' => ['required']
         ]);
         $result = auth()->attempt([
-            'email' => request('email'),
+            'email' => strtolower(request('email')),
             'password' => request('password')
         ]);
         if ($result) {

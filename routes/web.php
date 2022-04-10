@@ -40,3 +40,5 @@ Route::get('/profile','AccountController@profile');
 Route::get('/logout','AccountController@logout');
 
 Route::post('/updated-password','AccountController@updatePassword');
+
+Route::get('/{email}','UsersController@seeUser');
