@@ -46,6 +46,7 @@ Route::post('/updated-password','AccountController@updatePassword');
 
 Route::post('/messages', 'MessagesController@new');
 
-Route::get('/{email}','UsersController@seeUser');
-
 });
+
+
+Route::get('/{email}','UsersController@seeUser');
