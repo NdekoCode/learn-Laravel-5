@@ -20,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/home','welcome');
 Route::view('/about','about');
 
-Route::get('/hello/{firstname}', function () {
-    return view('hello', ['firstname'=>request('firstname')]);
-});
+Route::view('/hello/{firstname}','hello',['firstname'=>request('firstname')]);
 
 Route::get('/signin', 'SigninController@formSignin');
 
@@ -35,10 +33,19 @@ Route::post('/login','LoginController@loginTraitement');
 
 Route::get('/', 'UsersController@usersList');
 
-Route::get('/profile','AccountController@profile');
-
 Route::get('/logout','AccountController@logout');
 
+Route::group([
+    // Le middleware à appelé pour tous ce groupe de route
+    'middleware'=> 'App\Http\Middleware\Auth'
+], function () {
+    // Un groupe de route impacter par le middleware `Auth`
+    // A chaque qu'un utilisateurs voudra acceder à l'une de ces routes, ce middleware sera appelé
+Route::get('/profile','AccountController@profile'); 
 Route::post('/updated-password','AccountController@updatePassword');
 
+Route::post('/messages', 'MessagesController@new');
+
 Route::get('/{email}','UsersController@seeUser');
+
+});

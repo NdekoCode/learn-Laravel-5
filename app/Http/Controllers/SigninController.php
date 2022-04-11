@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
 
 class SigninController extends Controller
 {
     public function formSignin () {
+
         if(auth()->check()) {
-            return redirect('/profile')->withErrors(["global_errors"=>"Vous etes déjà connectés"]);
+            flash("Vous etes déjà connectés")->error();
+            return redirect('/profile');
         }
         return view('signin');
     }
