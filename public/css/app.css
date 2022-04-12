@@ -635,11 +635,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 
-.bg-blue-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
-}
-
 .p-3 {
   padding: 0.75rem;
 }
@@ -880,12 +875,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition-duration: 300ms;
 }
 
-.navbar__link-img {
+.navbar__link-img{
+  width: 40px;
+  height: 40px;
   border-style: none;
   background-color: transparent;
+  padding-left: 0px;
+  padding-right: 0px
 }
 
-.btn:hover, .navbar__link.is-active, .navbar__link:hover, .user-link:hover {
+.btn:hover, .navbar__link.is-active, .navbar__link:hover, .user-link:hover, .navbar__link-img.is-active .user-link {
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity));
 }
@@ -894,6 +893,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 9999px;
   border-width: 1px;
   padding: 0.25rem;
+}
+
+.link {
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.link:hover:hover {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
 }
 
 .alert {

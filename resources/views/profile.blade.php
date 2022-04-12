@@ -4,8 +4,7 @@
 <div class="mb-3">
     
     <h1 class="text-3xl font-bold mb-3">Mon compte</h1>
-    <p class="mb-3">Vous etes bien connecté</p>
-    <p><a href="/logout" class="text-white bg-blue-500 px-3 py-2 rounded">Se deconnecter</a></p>
+    <p><a class="link" href="/{{ auth()->user()->email }}">{{ auth()->user()->email }}</a></p>
 </div>
 {{--  Modifier le mot de passe  --}}
 <h2 class="title title-2">Modifier votre mot de passe</h2>

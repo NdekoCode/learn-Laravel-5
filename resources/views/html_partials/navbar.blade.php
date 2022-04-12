@@ -1,19 +1,25 @@
 <div class="container">
-
-    <a href="/" class="header__logo title title-2">Mon site</a>
+    @include('html_partials.links',['classLink'=>'header__logo title title-2',
+    'link'=>'/','linkTitle'=>"Mon site",'list'=>false])
     <nav class="navbar">
         <ul class="navbar__list start">
-            <li class="list__item">
-                <a href="/" class="navbar__link">Acceuil</a>
-            </li>
+            
+    @include('html_partials.links',['classLink'=>'navbar__link',
+    'link'=>'/','linkTitle'=>"Acceuil",'list'=>true])
         </ul>
         <ul class="navbar__list end">
             @if (auth()->guest())
-                <li class="list__item"><a class="btn navbar__link {{ request()->is('login') ? 'is-active': '' }}" href="/login">Connexion</a></li>
-                <li class="list__item"><a class="btn navbar__link {{ request()->is('signin') ? 'is-active' :''  }}" href="/signin">Inscription</a></li>
+            
+    @include('html_partials.links',['classLink'=>'btn navbar__link',
+    'link'=>'/login','linkTitle'=>"Connexion",'list'=>true])
+    
+    @include('html_partials.links',['classLink'=>'btn navbar__link',
+    'link'=>'/signin','linkTitle'=>"Inscription",'list'=>true])
             @else
-                <li class="list__item"><a class="btn navbar__link" href="/logout">Deconnexion</a></li>
-                <li class="list__item"><a class="navbar__link navbar__link-img {{ request()->is('profile') ? 'is-active' :''  }}" href="/profile"><img class="user-link" src="{{ asset('img/user.svg') }}" width="40" height="40" alt=""></a></li>
+            
+    @include('html_partials.links',['classLink'=>'btn navbar__link',
+    'link'=>'/logout','linkTitle'=>"Deconnexion",'list'=>true])
+                <li class="list__item"><a class=" navbar__link-img {{ request()->is('profile') ? 'is-active' :''  }}" href="/profile"><img class="user-link" src="{{ asset('img/user.svg') }}" width="40" height="40" alt=""></a></li>
             @endif
         </ul>
     </nav>
