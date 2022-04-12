@@ -48,6 +48,9 @@
 .btn {
     @apply px-3 py-2 mx-1 my-1 border rounded bg-gray-200 transition-all duration-300;
 }
+.btn-primary {
+    @apply bg-blue-600 text-gray-200;
+}
 .navbar__link-img{
     width: 40px;
     height: 40px;

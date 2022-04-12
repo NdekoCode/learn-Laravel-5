@@ -2,7 +2,12 @@
 
 @section('content')
 <div>
-    <h2 class="title title-2">{{ $user->email }}</h2>
+    <h2 class="text-sm flex items-center "><p class="text-lg font-bold">{{ $user->email }}</p> 
+        <form method="post"> 
+            {{ csrf_field() }}
+            <button type="submit" class="btn btn-primary">Suivre</button>
+        </form>
+    </h2>
     @if (auth()->check() && auth()->user()->id === $user->id)
         <h4 class="title title-4">Entrer votre message</h4>
         <form action="/messages" method="post">
