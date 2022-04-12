@@ -18,11 +18,10 @@ class UsersController extends Controller
         $email = request('email');
         // On recupere un seul utilisateur dont l'email correspond à $email
         $user = User::where('email',$email)->firstOrFail();
-        $messages = Message::where('user_id', $user->id)->orderByDesc('created_at')->get();
 
         return view('/user',[
             'user' => $user,
-            'messages' => $messages
+            'messages' => $user->messages
         ]);
 
     }

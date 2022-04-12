@@ -14,4 +14,8 @@ class User extends Model implements Authenticatable{
      * @var array
      */
     protected $fillable = ['email','password'];
+
+    public function messages () {
+        return $this->hasMany(Message::class)->latest();
+    }
 }
