@@ -19,7 +19,44 @@
 .title.title-4 {
     @apply text-xl;
 }
+.header {
+    @apply text-slate-700 border-b
+}
+.header .container {
+    @apply flex items-center py-3 mx-auto;
+}
+.navbar{
+    @apply flex items-center w-full
+}
+.navbar .start{
+    @apply mr-auto;
+}
+.navbar .end {
+@apply ml-auto;
+}
+.navbar__list li{
+    @apply inline-block mx-3 align-middle;
+}
+.header__logo{
+    @apply text-slate-500 mr-10 w-max min-w-fit;
+    
+}
 
+.navbar__link {
+    @apply px-3 py-2 mx-1 my-1 transition-all duration-300
+}
+.btn {
+    @apply px-3 py-2 mx-1 my-1 border rounded bg-gray-200 transition-all duration-300;
+}
+.navbar__link-img{
+    @apply bg-transparent border-none
+}
+.btn:hover,.navbar__link.is-active, .navbar__link:hover,.user-link:hover {
+    @apply bg-gray-400
+}
+.user-link{
+    @apply border rounded-full p-1
+}
 .alert {
     @apply rounded text-sm mb-3 px-2 py-3 my-3 border;
 }
