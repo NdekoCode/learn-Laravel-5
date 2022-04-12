@@ -2,11 +2,14 @@
 
 @section('content')
 <div>
-    <h2 class="text-sm flex items-center "><p class="text-lg font-bold">{{ $user->email }}</p> 
-        <form method="post"> 
+    <h2 class="text-sm flex items-center "><p class="text-lg font-bold">{{ $user->email }}</p>
+        {{--  Ce formulaire ne va s'afficher que si l'utilisateur est connecté  --}}
+    @auth
+        <form method="post" action="/follow/{{ $user->email }}"> 
             {{ csrf_field() }}
             <button type="submit" class="btn btn-primary">Suivre</button>
         </form>
+    @endauth
     </h2>
     @if (auth()->check() && auth()->user()->id === $user->id)
         <h4 class="title title-4">Entrer votre message</h4>

@@ -35,6 +35,7 @@ Route::get('/', 'UsersController@usersList');
 
 Route::get('/logout','AccountController@logout');
 
+// Un groupe de route dependant d'un middleware
 Route::group([
     // Le middleware à appelé pour tous ce groupe de route
     'middleware'=> 'App\Http\Middleware\Auth'
@@ -45,6 +46,8 @@ Route::get('/profile','AccountController@profile');
 Route::post('/updated-password','AccountController@updatePassword');
 
 Route::post('/messages', 'MessagesController@new');
+
+Route::post('/follow/{email}','FollowController@new');
 
 });
 
