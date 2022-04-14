@@ -10,7 +10,22 @@ class FollowController extends Controller
         // L'utilisateur qui veut suivre l'autre c'est l'utilisateur connecté
         $follower = auth()->user();
         // L'utilisateur dont on veut suivre ou l'utilisateur à qui on veut s'abonner
-        $follow = User::where('email', strtolower(request('email')))->firstOrFail();
-        return "Vous suiver ".request('email');
+        $followed = User::where('email', strtolower(request('email')))->firstOrFail();
+
+        $follower->follow()->attach($followed);
+        flash("Vous suivez maintenant ".$followed->email)->success();
+
+        return back();
     }
+
+    public function remove () {
+        $follower = auth()->user();
+        $followed = User::where('email', request('email'))->firstOrFail();
+        $follower->follow()->detach($followed);
+        flash("Vous ne suivez plus ".$followed->email)->error();
+        return back();
+
+    }
+
+
 }

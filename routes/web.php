@@ -48,6 +48,7 @@ Route::post('/updated-password','AccountController@updatePassword');
 Route::post('/messages', 'MessagesController@new');
 
 Route::post('/follow/{email}','FollowController@new');
+Route::delete('/follow/{email}','FollowController@remove');
 
 });
 
