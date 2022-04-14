@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\user;
+use App\Mail\newFollowerMail;
+use App\User;
+use Illuminate\Support\Facades\Mail;
 
 class FollowController extends Controller
 {
@@ -13,6 +15,9 @@ class FollowController extends Controller
         $followed = User::where('email', strtolower(request('email')))->firstOrFail();
 
         $follower->follow()->attach($followed);
+        
+        Mail::to($followed)->send(new newFollowerMail);
+        
         flash("Vous suivez maintenant ".$followed->email)->success();
 
         return back();
