@@ -20,7 +20,7 @@ class FollowController extends Controller
 
     public function remove () {
         $follower = auth()->user();
-        $followed = User::where('email', request('email'))->firstOrFail();
+        $followed = User::where('email', strtolower(request('email')))->firstOrFail();
         $follower->follow()->detach($followed);
         flash("Vous ne suivez plus ".$followed->email)->error();
         return back();
