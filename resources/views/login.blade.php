@@ -11,7 +11,8 @@
         </div>
         
         <form action="" method="post" class="font-normal flex items-center flex-col justify-center w-1/2 ">
-            {{ csrf_field() }}
+        {{--  Pour la securité du formulaire  --}}
+            @csrf
             
             @if($errors->has('auth_errors'))
             <div class="alert alert-danger w-4/5">{{ $errors->first('auth_errors') }}</div>

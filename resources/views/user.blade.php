@@ -12,7 +12,7 @@
                         {{-- Car le navigateur ne supporte pas les autres type de methode ('delete','patch') --}}
                         {{--  Si l'utilisateur connecté suit l'utilisateur de la page alors modifie la methode du formulaire  --}}
                         @if (auth()->user()->follows($user))
-                            {{ method_field('delete') }}
+                            @method('delete')
                         @endif
                         <button type="submit" class="btn btn-primary">
                             {{-- Si l'utilisateur connecté suis l'utilisateur de la page --}}
@@ -29,7 +29,7 @@
         @if (auth()->check() && auth()->user()->id === $user->id)
             <h4 class="title title-4">Entrer votre message</h4>
             <form action="/messages" method="post">
-                {{ csrf_field() }}
+                @csrf
 
                 <div class="form-container h-full w-full">
                     @if ($errors->has('auth_errors'))

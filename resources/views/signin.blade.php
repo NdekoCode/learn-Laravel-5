@@ -11,7 +11,7 @@
         </div>
         
         <form action="/signin" method="post" class="font-normal flex items-center justify-center w-1/2 ">
-            {{ csrf_field() }}
+            @csrf
             
             <div class="form-container h-full p-5 w-full px-14 py-3">
                 @if($errors->has('auth_errors'))

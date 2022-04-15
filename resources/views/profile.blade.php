@@ -9,7 +9,7 @@
 {{--  Modifier le mot de passe  --}}
 <h2 class="title title-2">Modifier votre mot de passe</h2>
 <form action="/updated-password" method="post" class="font-normal flex items-center justify-center w-1/2 ">
-    {{ csrf_field() }}
+    @csrf
     
     <div class="form-container h-full w-full">
         @if($errors->has('auth_errors'))
