@@ -12,13 +12,19 @@ class newFollowerMail extends Mailable
     use Queueable, SerializesModels;
 
     /**
+     * Les vues vont recuperer toutes les variables public et les rendre utilisable
+     *
+     * @var App\User
+     */
+    public $follower;
+    /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($follower)
     {
-        //
+        $this->follower = $follower;
     }
 
     /**
@@ -28,6 +34,7 @@ class newFollowerMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.new_follower');
+        return $this->subject('Vous avez un nouveau follower')
+        ->view('mails.new_follower');
     }
 }

@@ -16,7 +16,7 @@ class FollowController extends Controller
 
         $follower->follow()->attach($followed);
         
-        Mail::to($followed)->send(new newFollowerMail);
+        Mail::to($followed)->send(new newFollowerMail($follower));
         
         flash("Vous suivez maintenant ".$followed->email)->success();
 
