@@ -1,7 +1,7 @@
 <div class="container">
     @include('html_partials.links', [
         'classLink' => 'header__logo title title-2',
-        'link' => '/',
+        'link' => '',
         'linkTitle' => 'Mon site',
         'list' => false,
     ])
@@ -10,10 +10,11 @@
 
             @include('html_partials.links', [
                 'classLink' => 'navbar__link',
-                'link' => '/',
+                'link' => '',
                 'linkTitle' => 'Acceuil',
                 'list' => true,
             ])
+            @include('html_partials.links',['classLink'=>'navbar__link','link'=>'news','linkTitle'=>'Actualités','list'=>true])
         </ul>
         <ul class="navbar__list end">
             {{-- On verifie si l'utilisateur est connecté --}}
@@ -21,7 +22,7 @@
 
                 @include('html_partials.links', [
                     'classLink' => 'btn navbar__link',
-                    'link' => '/logout',
+                    'link' => 'logout',
                     'linkTitle' => 'Deconnexion',
                     'list' => true,
                 ])
