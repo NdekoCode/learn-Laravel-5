@@ -16,7 +16,7 @@ class newFollowerMail extends Mailable
      *
      * @var App\User
      */
-    public $follower;
+    protected $follower;
     /**
      * Create a new message instance.
      *
@@ -35,6 +35,6 @@ class newFollowerMail extends Mailable
     public function build()
     {
         return $this->subject('Vous avez un nouveau follower')
-        ->view('mails.new_follower');
+        ->markdown('mails.new_follower',['follower'=>$this->follower]);
     }
 }
