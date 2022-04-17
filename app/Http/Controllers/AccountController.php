@@ -37,8 +37,9 @@ class AccountController extends Controller
         request()->validate([
             'avatar' => ['required', 'image']
         ]);
-        // On enregistre le fichier dans "storages/app/avatars"
+        // On enregistre le fichier dans "storages/app/avatars" avec un nom unique
         $path = request('avatar')->store('avatars');
+        auth()->user()->update(['avatar' => $path]);
         return $path;
     }
 }
