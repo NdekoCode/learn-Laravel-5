@@ -44,6 +44,7 @@ Route::group([
     // A chaque qu'un utilisateurs voudra acceder à l'une de ces routes, ce middleware sera appelé
     Route::get('/profile', 'AccountController@profile');
     Route::post('/updated-password', 'AccountController@updatePassword');
+    Route::post('/updated-avatar', 'AccountController@updateAvatar');
 
     Route::post('/messages', 'MessagesController@new');
 

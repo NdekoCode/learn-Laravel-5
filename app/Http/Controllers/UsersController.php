@@ -22,6 +22,7 @@ class UsersController extends Controller
 
         return view('/user', [
             'user' => $user,
+            // On evite les erreur `N+1`
             'messages' => $user->load('messages')->messages
         ]);
     }
