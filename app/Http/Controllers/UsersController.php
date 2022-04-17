@@ -9,20 +9,20 @@ use Illuminate\Http\Request;
 class UsersController extends Controller
 {
 
-    public function usersList ()
+    public function usersList()
     {
         return view('/users', ['users' => User::all()]);
     }
-    public function seeUser() {
-        
+    public function seeUser()
+    {
+
         $email = request('email');
         // On recupere un seul utilisateur dont l'email correspond à $email
-        $user = User::where('email',$email)->firstOrFail();
+        $user = User::where('email', $email)->firstOrFail();
 
-        return view('/user',[
+        return view('/user', [
             'user' => $user,
-            'messages' => $user->messages
+            'messages' => $user->load('messages')->messages
         ]);
-
     }
 }

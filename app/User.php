@@ -6,16 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as BasicAuthenticatable;
 
-class User extends Model implements Authenticatable{
+class User extends Model implements Authenticatable
+{
     use BasicAuthenticatable;
     /**
      * Fillable(Remplissable) Va contenir la liste des champs autorisé
      *
      * @var array
      */
-    protected $fillable = ['email','password'];
+    protected $fillable = ['email', 'password'];
 
-    public function messages () {
+    public function messages()
+    {
         return $this->hasMany(Message::class)->latest();
     }
     /**
@@ -23,8 +25,9 @@ class User extends Model implements Authenticatable{
      *
      * @return BelongsToMany
      */
-    public function follow() {
-        return $this->belongsToMany(User::class,'followed','follower_id','followed_id');
+    public function follow()
+    {
+        return $this->belongsToMany(User::class, 'followed', 'follower_id', 'followed_id');
     }
 
     /**
@@ -33,7 +36,8 @@ class User extends Model implements Authenticatable{
      * @param User $user
      * @return void
      */
-    public function follows ($user) {
+    public function follows($user)
+    {
         // On recupere toutes les personnes que l'on suit
         // exists() Permet de verifier si la requete retourne une ligne ou plusieurs et retourne "false" si elle retourne rien
         return $this->follow()->where('followed_id', $user->id)->exists();
