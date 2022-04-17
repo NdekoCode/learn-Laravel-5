@@ -37,9 +37,10 @@ class AccountController extends Controller
         request()->validate([
             'avatar' => ['required', 'image']
         ]);
-        // On enregistre le fichier dans "storages/app/avatars" avec un nom unique
-        $path = request('avatar')->store('avatars');
+        // On enregistre le fichier dans "storages/app/public/avatars" avec un nom unique
+        $path = request('avatar')->store('avatars', 'public');
         auth()->user()->update(['avatar' => $path]);
-        return $path;
+        flash("Votre image a été télécharger avec succés")->success();
+        return redirect('/profile');
     }
 }

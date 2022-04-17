@@ -14,7 +14,12 @@
                 'linkTitle' => 'Acceuil',
                 'list' => true,
             ])
-            @include('html_partials.links',['classLink'=>'navbar__link','link'=>'news','linkTitle'=>'Actualités','list'=>true])
+            @include('html_partials.links', [
+                'classLink' => 'navbar__link',
+                'link' => 'news',
+                'linkTitle' => 'Actualités',
+                'list' => true,
+            ])
         </ul>
         <ul class="navbar__list end">
             {{-- On verifie si l'utilisateur est connecté --}}
@@ -27,8 +32,9 @@
                     'list' => true,
                 ])
                 <li class="list__item"><a class=" navbar__link-img {{ request()->is('profile') ? 'is-active' : '' }}"
-                        href="/profile"><img class="user-link" src="{{ asset('img/user.svg') }}" width="40"
-                            height="40" alt=""></a></li>
+                        href="/profile"><img class="user-link"
+                            src="{{ auth()->user()->avatar ? '/storage/' . auth()->user()->avatar : asset('img/user.svg') }}"
+                            width="50" height="50" alt=""></a></li>
             @else
                 @include('html_partials.links', [
                     'classLink' => 'btn navbar__link',

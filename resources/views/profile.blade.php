@@ -4,7 +4,8 @@
     <div class="mb-3">
 
         <h1 class="text-3xl font-bold mb-3">Mon compte</h1>
-        <p><a class="link" href="/{{ auth()->user()->email }}">{{ auth()->user()->email }}</a></p>
+        <p class="flex items-center"><img src="storage/{{ auth()->user()->avatar }}" class="m-1 inline-block" width="150"
+                alt=""><a class="link" href="/{{ auth()->user()->email }}">{{ auth()->user()->email }}</a></p>
     </div>
     {{-- Modifier le mot de passe --}}
     <h2 class="title title-2">Modifier votre mot de passe</h2>
